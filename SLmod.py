@@ -5,6 +5,7 @@ import pyshtools as pysh
 import RFmod as RF
 from numpy import pi as pi
 from scipy.interpolate import RegularGridInterpolator
+import os
 sentinel = object()
 
 
@@ -387,7 +388,8 @@ def centrifugal_perturbation_vector(om,lat,lon):
 ################################################
 # reads in and returns love numbers from a file
 def love_numbers(L):
-    data = np.loadtxt('data/love.dat')
+    #data = np.loadtxt('data/love.dat')
+    data = np.loadtxt(os.path.join(os.path.split(os.path.abspath(__file__))[0], 'data/love.dat'))
     h = data[:L+1,1] + data[:L+1,3]
     k = data[:L+1,2] + data[:L+1,4]
     ht = data[2,5]
@@ -398,7 +400,8 @@ def love_numbers(L):
 ################################################
 # reads in and returns love numbers from a file
 def generalised_love_numbers(L):
-    data = np.loadtxt('data/love.dat')
+    #data = np.loadtxt('data/love.dat')
+    data = np.loadtxt(os.path.join(os.path.split(os.path.abspath(__file__))[0], 'data/love.dat'))
     h_u   = data[:L+1,1]
     k_u   = data[:L+1,2]
     h_phi = data[:L+1,3]
